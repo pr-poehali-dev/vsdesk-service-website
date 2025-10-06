@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">© 2024 vsDesk. Все права защищены.</p>
+          <p className="text-gray-400 text-sm">© 2025 vsDesk. Все права защищены.</p>
           <div className="flex gap-6 text-sm text-gray-400">
             <a href="#" className="hover:text-white transition">Политика конфиденциальности</a>
             <a href="#" className="hover:text-white transition">Условия использования</a>
