@@ -22,7 +22,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
             <div className="w-8 h-8 bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">vD</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">vsDesk</span>
+            <span className="text-xl font-bold text-gray-900">Desk</span>
           </div>
           
           <div className="hidden md:flex items-center gap-8">
