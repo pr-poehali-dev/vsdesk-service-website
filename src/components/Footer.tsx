@@ -4,11 +4,11 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-1 mb-4">
               <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-gray-900 font-bold text-sm">vD</span>
+                <span className="text-gray-900 font-bold text-sm">vs</span>
               </div>
-              <span className="text-xl font-bold">vsDesk</span>
+              <span className="text-xl font-bold">Desk</span>
             </div>
             <p className="text-gray-400 text-sm">Профессиональная система управления технической поддержкой</p>
           </div>
