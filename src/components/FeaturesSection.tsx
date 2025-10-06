@@ -36,9 +36,10 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+    <section id="features" className="py-20 bg-white relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 to-transparent pointer-events-none"></div>
+      <div className="container mx-auto px-4 relative">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Возможности системы</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Все инструменты для эффективной работы службы технической поддержки
@@ -47,9 +48,13 @@ export default function FeaturesSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <Card 
+              key={index} 
+              className="border-gray-200 hover:shadow-lg hover:shadow-gray-200/50 transition-all duration-300 hover:-translate-y-1 animate-fade-in-up backdrop-blur-sm bg-white/80"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
               <CardHeader>
-                <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Icon name={feature.icon} className="text-gray-700" size={24} />
                 </div>
                 <CardTitle className="text-xl text-gray-900">{feature.title}</CardTitle>

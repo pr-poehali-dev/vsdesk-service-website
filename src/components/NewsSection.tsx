@@ -22,26 +22,30 @@ const news = [
 
 export default function NewsSection() {
   return (
-    <section id="news" className="py-20 bg-gray-50">
+    <section id="news" className="py-20 bg-gray-50 relative">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Новости и обновления</h2>
           <p className="text-lg text-gray-600">Следите за развитием платформы</p>
         </div>
 
         <div className="max-w-4xl mx-auto space-y-6">
           {news.map((item, index) => (
-            <Card key={index} className="border-gray-200 hover:border-gray-300 transition-colors">
+            <Card 
+              key={index} 
+              className="border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-md animate-slide-in-left group cursor-pointer"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <Badge variant="outline" className="text-gray-600 border-gray-300">{item.date}</Badge>
                     </div>
-                    <CardTitle className="text-2xl text-gray-900 mb-2">{item.title}</CardTitle>
+                    <CardTitle className="text-2xl text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">{item.title}</CardTitle>
                     <CardDescription className="text-gray-600 text-base">{item.description}</CardDescription>
                   </div>
-                  <Icon name="ArrowRight" className="text-gray-400 mt-2" size={20} />
+                  <Icon name="ArrowRight" className="text-gray-400 mt-2 group-hover:translate-x-1 transition-transform" size={20} />
                 </div>
               </CardHeader>
             </Card>

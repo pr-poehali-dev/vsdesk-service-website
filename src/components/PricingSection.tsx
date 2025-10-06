@@ -27,16 +27,20 @@ const pricing = [
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="py-20 bg-gray-50">
+    <section id="pricing" className="py-20 bg-gray-50 relative">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Тарифы</h2>
           <p className="text-lg text-gray-600">Выберите подходящий план для вашего бизнеса</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {pricing.map((plan, index) => (
-            <Card key={index} className={`relative border-2 ${plan.popular ? 'border-gray-900 shadow-xl' : 'border-gray-200'}`}>
+            <Card 
+              key={index} 
+              className={`relative border-2 transition-all duration-300 hover:-translate-y-2 animate-scale-in ${plan.popular ? 'border-gray-900 shadow-xl hover:shadow-2xl' : 'border-gray-200 hover:shadow-lg'}`}
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <Badge className="bg-gray-900 text-white">Популярный</Badge>
@@ -58,7 +62,7 @@ export default function PricingSection() {
                     </li>
                   ))}
                 </ul>
-                <Button className={`w-full ${plan.popular ? 'bg-gray-900 hover:bg-gray-800' : 'bg-white hover:bg-gray-50 text-gray-900 border border-gray-300'}`}>
+                <Button className={`w-full transition-transform hover:scale-105 ${plan.popular ? 'bg-gray-900 hover:bg-gray-800' : 'bg-white hover:bg-gray-50 text-gray-900 border border-gray-300'}`}>
                   Выбрать план
                 </Button>
               </CardContent>
