@@ -20,7 +20,7 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
           <Badge className="mb-4 bg-gray-100 text-gray-700 hover:bg-gray-200 animate-fade-in">Service Desk система нового поколения</Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fade-in-up [animation-delay:100ms]">
             Эффективное управление <br />
-            <span className="bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-indigo-700">технической поддержкой</span>
+            <span className="bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-blue-700">технической поддержкой</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto animate-fade-in-up [animation-delay:200ms]">
             vsDesk — профессиональная система для автоматизации работы службы поддержки. 
