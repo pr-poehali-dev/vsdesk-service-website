@@ -1,37 +1,91 @@
+import { useEffect, useRef, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 
+function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number; duration?: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const counterRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+
+    return () => {
+      if (counterRef.current) {
+        observer.unobserve(counterRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime: number | null = null;
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isVisible, end, duration]);
+
+  return (
+    <div ref={counterRef} className="text-4xl font-bold text-gray-900 mb-2">
+      {count}{suffix}
+    </div>
+  );
+}
+
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-20 bg-white relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/30 to-transparent pointer-events-none"></div>
+      <div className="container mx-auto px-4 relative">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in-up">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">О системе vsDesk</h2>
           </div>
 
           <div className="space-y-6 text-gray-600">
-            <p className="text-lg">
+            <p className="text-lg animate-fade-in-up [animation-delay:100ms]">
               vsDesk — это комплексное решение для автоматизации работы службы технической поддержки, 
               разработанное с учетом современных требований к качеству обслуживания клиентов.
             </p>
             
             <div className="grid md:grid-cols-3 gap-8 mt-12">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-gray-900 mb-2">5+</div>
+              <div className="text-center animate-scale-in [animation-delay:200ms]">
+                <AnimatedCounter end={5} suffix="+" />
                 <div className="text-gray-600">лет на рынке</div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-gray-900 mb-2">500+</div>
+              <div className="text-center animate-scale-in [animation-delay:300ms]">
+                <AnimatedCounter end={500} suffix="+" />
                 <div className="text-gray-600">компаний-клиентов</div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-gray-900 mb-2">99.9%</div>
+              <div className="text-center animate-scale-in [animation-delay:400ms]">
+                <AnimatedCounter end={99} suffix=".9%" duration={2500} />
                 <div className="text-gray-600">uptime SLA</div>
               </div>
             </div>
 
-            <Card className="mt-12 bg-gray-50 border-gray-200">
+            <Card className="mt-12 bg-gray-50 border-gray-200 animate-fade-in-up [animation-delay:500ms]">
               <CardHeader>
                 <CardTitle className="text-gray-900">Наши преимущества</CardTitle>
               </CardHeader>
