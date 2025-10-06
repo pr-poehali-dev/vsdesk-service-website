@@ -8,11 +8,13 @@ import Icon from '@/components/ui/icon';
 
 export default function Index() {
   const [activeSection, setActiveSection] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
     setActiveSection(id);
+    setMobileMenuOpen(false);
   };
 
   const features = [
@@ -110,10 +112,34 @@ export default function Index() {
               <button onClick={() => scrollToSection('contacts')} className="text-sm text-gray-600 hover:text-gray-900 transition">Контакты</button>
             </div>
 
-            <Button onClick={() => scrollToSection('demo')} className="bg-gray-900 hover:bg-gray-800">
-              Демо
-            </Button>
+            <div className="flex items-center gap-4">
+              <Button onClick={() => scrollToSection('demo')} className="hidden md:flex bg-gray-900 hover:bg-gray-800">
+                Демо
+              </Button>
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+                className="md:hidden p-2 text-gray-600 hover:text-gray-900"
+                aria-label="Меню"
+              >
+                <Icon name={mobileMenuOpen ? 'X' : 'Menu'} size={24} />
+              </button>
+            </div>
           </div>
+
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 space-y-2 animate-in slide-in-from-top duration-200">
+              <button onClick={() => scrollToSection('home')} className="block w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">Главная</button>
+              <button onClick={() => scrollToSection('features')} className="block w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">Возможности</button>
+              <button onClick={() => scrollToSection('news')} className="block w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">Новости</button>
+              <button onClick={() => scrollToSection('docs')} className="block w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">Документация</button>
+              <button onClick={() => scrollToSection('pricing')} className="block w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">Тарифы</button>
+              <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">О системе</button>
+              <button onClick={() => scrollToSection('contacts')} className="block w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">Контакты</button>
+              <Button onClick={() => scrollToSection('demo')} className="w-full mt-2 bg-gray-900 hover:bg-gray-800">
+                Демо
+              </Button>
+            </div>
+          )}
         </div>
       </nav>
 
