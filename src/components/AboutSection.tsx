@@ -56,8 +56,18 @@ function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number; d
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-white relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/30 to-transparent pointer-events-none"></div>
+    <section id="about" className="py-20 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-tr from-gray-50 via-white to-gray-100/50"></div>
+      <div className="absolute top-10 right-1/4 w-72 h-72 bg-gradient-to-bl from-gray-300/20 to-gray-100/10 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-gradient-to-tr from-gray-200/25 to-transparent rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
+      <svg className="absolute top-0 left-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" strokeWidth="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
       <div className="container mx-auto px-4 relative">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12 animate-fade-in-up">

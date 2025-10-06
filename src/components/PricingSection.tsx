@@ -27,8 +27,12 @@ const pricing = [
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="py-20 bg-gray-50 relative">
-      <div className="container mx-auto px-4">
+    <section id="pricing" className="py-20 bg-gray-50 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-50 to-white"></div>
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-br from-gray-400/20 to-gray-200/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-gray-300/25 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 3px 3px, rgba(0,0,0,0.025) 2px, transparent 0)', backgroundSize: '50px 50px' }}></div>
+      <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Тарифы</h2>
           <p className="text-lg text-gray-600">Выберите подходящий план для вашего бизнеса</p>

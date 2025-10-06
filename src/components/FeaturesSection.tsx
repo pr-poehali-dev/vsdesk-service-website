@@ -36,8 +36,11 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-20 bg-white relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 to-transparent pointer-events-none"></div>
+    <section id="features" className="py-20 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-white to-gray-50/30"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-gray-200/30 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-gray-300/20 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Возможности системы</h2>

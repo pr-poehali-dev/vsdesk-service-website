@@ -22,8 +22,12 @@ const news = [
 
 export default function NewsSection() {
   return (
-    <section id="news" className="py-20 bg-gray-50 relative">
-      <div className="container mx-auto px-4">
+    <section id="news" className="py-20 bg-gray-50 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-bl from-white via-gray-50 to-gray-100"></div>
+      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-gray-300/15 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-20 w-96 h-96 bg-gradient-to-tl from-gray-400/20 to-gray-200/10 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,0.02) 35px, rgba(0,0,0,0.02) 70px)', opacity: 0.5 }}></div>
+      <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Новости и обновления</h2>
           <p className="text-lg text-gray-600">Следите за развитием платформы</p>
